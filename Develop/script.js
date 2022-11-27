@@ -1,18 +1,20 @@
+let myEntries= ["8","9","10","11","12","1","2","3","4"]
 $(document).ready(function(){
- var temp = dayjs().hour(12)
- console.log(temp)
- var  storageItem = JSON.parse(window.localStorage.getItem("calendarItems"))
+dayjs().hour()
+  var today = dayjs().hour(12)
+ console.log(today)
+ var  storageItem = JSON.parse(window.localStorage.getItem("myEntries"))
 
   $('.saveBtn').on('click', function(){
     var description = $(this).siblings('.description').val();
     var time = $(this).parent().attr('id');
     console.log(time, description)
     //local storage is a string this line is parsing it into an array using JSON
-    var saveTolocal = JSON.parse(window.localStorage.getItem("calendarItems")) || []
+    var saveTolocal = JSON.parse(window.localStorage.getItem("myEntries")) || []
     saveTolocal.push({
       time, description
     })
-    localStorage.setItem('calendarItems', JSON.stringify(saveTolocal));
+    localStorage.setItem('myEntries', JSON.stringify(saveTolocal));
   })
   $(".description").each(function (){
     var rowId = $(this).parent().attr('id')
