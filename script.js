@@ -1,14 +1,15 @@
 var today= dayjs().format('YYYY-MM-DD [at] HH:mm:ss','HH:mm:ss [on] YYYY-MM-DD');
-
  dayjs();
 
 var workTime= ["8","9","10","11","12","1","2","3","4"]
+
 
 
 $(document).ready(function(){
   var today = dayjs().hour(12)
  console.log(today)
  var  storageItem = JSON.parse(window.localStorage.getItem("workTime"))
+ document.getElementById("currentDay").innerHTML = (dayjs().hour(12));
 
   $('.saveBtn').on('click', function(){
     var description = $(this).siblings('.description').val();
@@ -32,10 +33,13 @@ $(document).ready(function(){
         
       }
     }
-  })
-   
+  }) 
 })
+
+/*var currentHour = dayjs().format("h");
+if $(#tim) {
   
+}
 
 
 
