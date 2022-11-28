@@ -1,6 +1,26 @@
+
+header{
+  text-align:center
+}
+
 #currentDay{
   font-size: 34px;
 }
+
+.display-3{
+  font-weight: 700;
+  font-size:90px;
+}
+
+.text-center{
+  background-color: #06aed5
+}
+
+#top{
+  font-size: 50px;
+  font-family: 'Kaushan Script', cursive ;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;

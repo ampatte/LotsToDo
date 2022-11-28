@@ -9,7 +9,7 @@ $(document).ready(function(){
   var today = dayjs().hour(12)
  console.log(today)
  var  storageItem = JSON.parse(window.localStorage.getItem("workTime"))
- document.getElementById("currentDay").innerHTML = (dayjs().hour(12));
+ document.getElementById("currentDay").innerHTML = (dayjs().hour(13));
 
   $('.saveBtn').on('click', function(){
     var description = $(this).siblings('.description').val();
