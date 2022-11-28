@@ -3,13 +3,12 @@ var today= dayjs().format('YYYY-MM-DD [at] HH:mm:ss','HH:mm:ss [on] YYYY-MM-DD')
 
 var workTime= ["8","9","10","11","12","1","2","3","4"]
 
-
-
 $(document).ready(function(){
   var today = dayjs().hour(12)
  console.log(today)
+
  var  storageItem = JSON.parse(window.localStorage.getItem("workTime"))
- document.getElementById("currentDay").innerHTML = (dayjs().hour(13));
+ document.getElementById("currentDay").innerHTML = (dayjs().hour(12));
 
   $('.saveBtn').on('click', function(){
     var description = $(this).siblings('.description').val();
@@ -36,33 +35,20 @@ $(document).ready(function(){
   }) 
 })
 
-/*var currentHour = dayjs().format("h");
-if $(#tim) {
-  
+var currentHour = dayjs().format("h");
+
+$.each?(time-block, function(i, hour){
+var workTime = parseInt((this).attr("id"));
+if (workTime == currentHour) {
+  $(this).next.addClass("present");
 }
-
-
-
+else if (workTime < currentHour) {
+  $(this).next.addClass("past");
+}
+else if (workTime > currentHour) {
+  $(this).next.addClass("pfuture");
+}
+})
 /*var saveTolocal = JSON.parse(window.localStorage.getItem("workTime")) || []
     saveTolocal.push({
-      time, description
-    })
- localStorage.setItem('workTime', JSON.stringify(saveTolocal));
-  })*/
-// ***Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// ***the code isn't run until the browser has finished rendering all the elements
-// in the html.
-$(function () {
-  // ***TODO: Add a listener for click events on the save button. This code should
-  // ***use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  // TODO: Add code to display the current date in the header of the page.
-});
+      time, description*/
