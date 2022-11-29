@@ -1,5 +1,8 @@
 # LotsToDo
 Work Day Scheduler
+This is the fifth challenge in our Full Stack Coding Bootcamp!
+
+The assignment is to create a scheduler that meets the acceptance criteria below
 
 GIVEN I am using a daily planner to create a schedule
 WHEN I open the planner
