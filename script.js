@@ -1,14 +1,38 @@
-var today= dayjs().format('YYYY-MM-DD [at] HH:mm:ss','HH:mm:ss [on] YYYY-MM-DD');
- dayjs();
+var currentDay= dayjs().format('YYYY-MM-DD [at] HH:mm','HH:mm [on] YYYY-MM-DD');
+ 
+var workTime= ["8","9","10","11","12","13","14","15","16"]
 
-var workTime= ["8","9","10","11","12","1","2","3","4"]
+// We've defined currentDay and workTime
 
 $(document).ready(function(){
-  var today = dayjs().hour(12)
- console.log(today)
+  
+  var today = dayjs(12)
+  
+  console.log(today)
 
+  console.log(today.$H)
+ 
+  workTime.forEach(x => {
+  const savedItem = localStorage.getItem(`${x}-o-clock`) || ""
+ $(`#${x}-o-clock .description`).val(savedItem)
+
+ const timeDifference = today.$H - parseInt(x)
+ if (timeDifference > 0) {
+  $(`#${x}-o-clock .description`).addClass("future")
+ }
+ else if (timeDifference < 0) {
+  $(`#${x}-o-clock .description`).addClass("past")
+ }
+ else 
+ $(`#${x}-o-clock .description`).addClass("present")
+   })
+
+
+// We havent defined localStorage keys yet
+//const = localStorage.getItem()
  var  storageItem = JSON.parse(window.localStorage.getItem("workTime"))
- document.getElementById("currentDay").innerHTML = (dayjs().hour(12));
+ console.log(storageItem)
+ document.getElementById("currentDay").innerText = (dayjs().hour(-5));
 
   $('.saveBtn').on('click', function(){
     var description = $(this).siblings('.description').val();
@@ -16,39 +40,33 @@ $(document).ready(function(){
     console.log(time, description)
     //local storage is a string this line is parsing it into an array using JSON
   workTime.forEach(x => {
-   $(`#${x}-o-clock .descriptiion`).val(localStorage.getItem(`${x} -o-clock`));
-  })
-   
-    $(`#${x}-o-clock .descriptiion`).val(localStorage.setItem(`${x} -o-clock`));
-   })
-   console.log(workTime)
+    const entry = $(`#${x}-o-clock .description`).val()
+  // $(`#${x}-o-clock .description`).val(localStorage.getItem(`${x}-o-clock`));
+  localStorage.setItem(`${x}-o-clock`, entry)  
+   // $(`#${x}-o-clock .description`).val();
+     })
+   console.log(currentDay)
 
-  $(".description").each(function (){
-    var rowId = $(this).parent().attr('id')
-    for (let i = 0; i < storageItem.length; i++) {
-      const element = storageItem[i];
-      if (rowId == element.time) {
-        $(this).val(element.description)
+  // $(".description").each(function (){
+  //   var rowId = $(this).parent().attr('id')
+  //   for (let i = 0; i < storageItem.length; i++) {
+  //     const element = storageItem[i];
+  //     if (rowId == element.time) {
+  //       $(this).val(element.description)
         
-      }
-    }
-  }) 
-})
-
-var currentHour = dayjs().format("h");
-
-$.each?(time-block, function(i, hour){
+  //     }
+  //   }
+  // }) 
+})})
+/* $.each(workTime[""], function(i, workTime){
 var workTime = parseInt((this).attr("id"));
-if (workTime == currentHour) {
+if (workTime[""] == currentDay) {
   $(this).next.addClass("present");
 }
-else if (workTime < currentHour) {
+else if (workTime[""] < currentDay) {
   $(this).next.addClass("past");
 }
-else if (workTime > currentHour) {
-  $(this).next.addClass("pfuture");
+else  {
+  $(this).next.addClass("future");
 }
-})
-/*var saveTolocal = JSON.parse(window.localStorage.getItem("workTime")) || []
-    saveTolocal.push({
-      time, description*/
+})*/
